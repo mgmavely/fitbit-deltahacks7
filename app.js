@@ -41,7 +41,7 @@ apn.post("/", function(req, res) {
   if (days === undefined) {
     res.sendFile(__dirname + "/failure.html");
   } else if (days.length === 1) {
-    data = [days];
+    data.push(parseInt(days, 10));
     test(data, time);
     res.sendFile(__dirname + "/success.html");
   } else {
@@ -57,6 +57,6 @@ apn.post("/", function(req, res) {
 });
 
 
-apn.listen(3000 || process.env.PORT, function() {
+apn.listen(process.env.PORT || 3000, function() {
   console.log('Server running on port 3000');
 });
